@@ -1,18 +1,29 @@
-var {app, BrowserWindow} = require('electron');
+var {app, BrowserWindow} = require('electron')
 
-var mainWindow = null;
+var window = null
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
     if (process.platform != 'darwin')
-        app.quit();
-});
+        app.quit()
+})
 
 app.on('ready', function() {
-    mainWindow = new BrowserWindow({ width: 800, height: 600 });
-    mainWindow.loadURL('file://' + __dirname + '/index.html');
+    window = new BrowserWindow({
+        'width': 608,
+        'height': 608,
+        'resizable': false,
+        'use-content-size': true,
+        'show': false
+    })
 
-    mainWindow.on('closed', function() {
-        mainWindow = null;
-    });
-});
+    window.webContents.on('did-finish-load', function() {
+        window.show()
+    })
+
+    window.loadURL('file://' + __dirname + '/index.html')
+
+    window.on('closed', function() {
+        window = null
+    })
+})
