@@ -4,9 +4,9 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "electron": "32.1.0"
+    "electron": "32.1.0",
+    "remote": "^0.2.6"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "electron ."
   },
